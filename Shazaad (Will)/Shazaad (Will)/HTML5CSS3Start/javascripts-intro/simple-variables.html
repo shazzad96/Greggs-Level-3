@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+        <input type="text" id="userNameTxt" placeholder="Type your name">
+    
+        <button id="loginBtn">Log in</button>
+        
+        <div id="message"></div>
+        
+    <script>
+    
+        //set up an event listener to handle user clicking on te loginBtn
+        document.getElementById('loginBtn').addEventListener('click',displaymessage);
+        function displaymessage(){
+            userName= document.getElementById('userNameTxt').value;
+            console.log(userName);
+            document.getElementById('message').innerHTML = 'Hello ' + userName + ',hope you have a nice day';
+        };
+        
+        //declare a simple variable
+        var userName = 'Shazaad';
+        console.log('userName');
+        
+     </script>
+        
+</body>
+</html>

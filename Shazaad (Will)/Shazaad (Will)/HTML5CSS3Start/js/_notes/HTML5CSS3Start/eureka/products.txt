@@ -1,0 +1,8 @@
+{
+	"products":[
+		{"name":"Product 1","description":"Quite a nice product","cost":"195.00"},
+		{"name":"Product 2","description":"Quite a nice product","cost":"295.00"},
+		{"name":"Product 3","description":"Quite a nice product","cost":"495.00"}
+	]
+}
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../js/colorbox-master/example1/colorbox.css">
+
+    <style>
+        .cost:before {
+            content: '£';
+        }
+
+        figcaption {
+            font-family: arial;
+            font-size: 1.5em;
+            color: dodgerblue;
+            background: black;
+            padding: 7px;
+            border: darkblue solid 2.5px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        body>header {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        body>header figure img {
+            width: 100%;
+        }
+
+        body>header figure p {
+            margin: 0;
+        }
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <section id="thumbs"></section>
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+
+    <script src="../js/colorbox-master/jquery.colorbox-min.js"></script>
+
+    <script>
+        //create an array as a data model
+
+        var images = [{
+                fileName: 'image1.jpeg',
+                caption: 'A nice car',
+                cost: 95000
+            },
+            {
+                fileName: 'image2.jpeg',
+                caption: 'Something with four wheels',
+                cost: 115000
+            },
+            {
+                fileName: 'image3.jpeg',
+                caption: 'Lose your mind, find your soul',
+                cost: 99000
+            },
+            {
+                fileName: 'image4.jpeg',
+                caption: 'A realy nice car',
+                cost: 99500
+            },
+            {
+                fileName: 'image5.jpeg',
+                caption: 'A decent car',
+                cost: 12000
+            }
+
+        ];
+
+        //loop through each item in the array and display the image in a grid 
+        for (var i = 0; i < images.length; i++) {
+            console.log(images[i]);
+            //create an img tag and set attributes
+            var imgTag = document.createElement('img');
+            imgTag.setAttribute('src', '../images2/' + images[i].fileName);
+            imgTag.setAttribute('width', '75');
+            //creare a hyperlink and set attribute
+            var aTag = document.createElement('a');
+            aTag.setAttribute('href', '../images2/' + images[i].fileName);
+
+            //add a rel attribute for the colorbox plugin
+            aTag.setAttribute('rel', 'maserati');
+
+            //now add new tags to the section
+            aTag.appendChild(imgTag);
+            document.getElementById('thumbs').appendChild(aTag);
+
+        }; //end of for loop 
+
+        //invoke the colorbox plugin
+        $('a[rel=maserati]').colorbox({
+            width: '50%'
+        });
+
+    </script>
+
+
+</body>
+
+</html>

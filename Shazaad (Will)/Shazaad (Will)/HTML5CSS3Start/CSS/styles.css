@@ -1,0 +1,290 @@
+/*
+
+selector {
+    property:vale;
+
+}
+
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Magra|Permanent+Marker');
+
+
+/*element selector - specificity = 1 */
+body{
+    font-family: 'Magra', sans-serif;
+/*    background-color: */
+        
+}
+
+/*class selector - specificity = 10 */
+.hilite{
+    color:green;
+}
+
+
+/*id selector - specificity = 100 */
+#yellow{
+    color:yellow;
+}
+/*chevron defines a desecendent selctor*/
+body > header, body > aside, body > section {
+    border:2.5px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    
+}
+
+body > header{
+    height:400px;
+    width:800px;
+    background: url(../assets/1200px-Corona_Arch1.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+body > header h1{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3em; 
+    color:#fff;
+    text-shadow:6px 6px 6px #000; 
+}
+
+
+body > header nav ul, body > section > ul, form > ul{
+    list-style: none;
+    margin: 0;                    
+    padding:0;
+}
+
+
+body > header nav li{
+    display: inline; 
+}
+/*psuedo selector*/
+a:hover{
+    color: #7db9e8;
+}
+
+body > header nav a{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,207cca+11,207cca+49,207cca+49,2989d8+51,2989d8+51,207cca+86,7db9e8+100 */
+background: rgb(30,87,153); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(32,124,202,1) 11%, rgba(32,124,202,1) 49%, rgba(32,124,202,1) 49%, rgba(41,137,216,1) 51%, rgba(41,137,216,1) 51%, rgba(32,124,202,1) 86%, rgba(125,185,232,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 11%,rgba(32,124,202,1) 49%,rgba(32,124,202,1) 49%,rgba(41,137,216,1) 51%,rgba(41,137,216,1) 51%,rgba(32,124,202,1) 86%,rgba(125,185,232,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 11%,rgba(32,124,202,1) 49%,rgba(32,124,202,1) 49%,rgba(41,137,216,1) 51%,rgba(41,137,216,1) 51%,rgba(32,124,202,1) 86%,rgba(125,185,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */;
+    
+    
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 7px;
+    width: 75px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+body > header > nav a:hover{
+    background: white;
+    transition: background 0.35s;
+}
+
+a[href$=pdf]{
+    background: url(../assets/file-pdf.png) no-repeat right;
+    padding-right: 23px;
+}
+
+body > header nav{
+    padding: 10px;
+    position:absolute;
+    bottom:10px;
+    right:10px;    
+}
+
+.float-right{
+    float: right;
+}
+
+.business-card{
+    border: 1px solid #000;
+    animation: fadein 3s, rotate 2s;
+    animation-delay: 0s, 3s; 
+}
+
+.business-card figcaption{
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    
+}
+
+.content{
+    column-count: 3;
+}
+
+.content p{
+    margin-top: 0;
+}
+
+/*add media query to adust number of columns depending on screen width*/
+
+@media only screen and (max-width:700px){
+    .content{
+        column-count: 2;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .content{
+        column-count: 1;
+    }
+}
+
+/*css web animations*/
+@keyframes fadein{
+    from{
+        opacity:0;    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes rotate{
+    from{
+        transform:rotateY(0deg); 
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+
+
+/*form systling*/
+
+
+label{
+    display: block;
+}
+
+form > ul > li {
+    margin: 15px 0;
+}
+
+input[type=text],input[type=email],textarea,select{
+    font-size: 1em;
+    width: 50%;
+    border:1px solid #ccc;
+    
+}
+
+
+input[type=date]{
+    font-size: 1em;
+    border:1px solid #ccc;
+}
+
+form button[type=submit]{
+    padding: 2px;
+    font-size: 1em;
+    border: 1px solid #7db9e8;
+    background: background: rgb(30,87,153); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(32,124,202,1) 11%, rgba(32,124,202,1) 49%, rgba(32,124,202,1) 49%, rgba(41,137,216,1) 51%, rgba(41,137,216,1) 51%, rgba(32,124,202,1) 86%, rgba(125,185,232,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 11%,rgba(32,124,202,1) 49%,rgba(32,124,202,1) 49%,rgba(41,137,216,1) 51%,rgba(41,137,216,1) 51%,rgba(32,124,202,1) 86%,rgba(125,185,232,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 11%,rgba(32,124,202,1) 49%,rgba(32,124,202,1) 49%,rgba(41,137,216,1) 51%,rgba(41,137,216,1) 51%,rgba(32,124,202,1) 86%,rgba(125,185,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */;
+    color:white;
+    
+}
+
+input:focus,textarea:focus{
+    border:1px solid #f60;
+    padding-right: 70px;
+    transition: padding 0.5s;
+}
+
+*:focus{
+    outline:none;
+}
+
+input:required,textarea:required:valid{
+    background: #fff url(../form_demo/images/red_asterisk.png) no-repeat right;
+}
+
+input:required:valid{
+    background: #fff url(../form_demo/images/valid.png) no-repeat 99% top;
+}
+
+input:focus:invalid,textarea:focus:invalid{
+    background: #fff url(../form_demo/images/invalid.png) no-repeat 99% top;
+}
+
+textarea{
+    height:100px;
+}
+
+/*table styling*/
+table{
+    border-collapse: collapse;
+}
+
+th,td{
+    padding:7px;
+}
+
+th{
+    background-color: background: background: rgb(30,87,153); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(32,124,202,1) 11%, rgba(32,124,202,1) 49%, rgba(32,124,202,1) 49%, rgba(41,137,216,1) 51%, rgba(41,137,216,1) 51%, rgba(32,124,202,1) 86%, rgba(125,185,232,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 11%,rgba(32,124,202,1) 49%,rgba(32,124,202,1) 49%,rgba(41,137,216,1) 51%,rgba(41,137,216,1) 51%,rgba(32,124,202,1) 86%,rgba(125,185,232,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 11%,rgba(32,124,202,1) 49%,rgba(32,124,202,1) 49%,rgba(41,137,216,1) 51%,rgba(41,137,216,1) 51%,rgba(32,124,202,1) 86%,rgba(125,185,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */;
+    color:white;
+}
+
+
+tbody tr:nth-child(all){
+    background-color: dimgrey;
+    
+}
+
+tbody td:nth-child(1){
+    white-space: nowrap;
+}
+
+#carsTable td:nth-child(3):before,#shoppingCartTable td:nth-child(3):before{
+    content: '£';
+}
+
+body > header{
+    height:300px;
+    background: 
+        url(../assets/logo.svg) no-repeat 98% 2%,
+        url(../assets/1200px-Corona_Arch1.jpg) no-repeat ;
+    
+    background-size: 9%, 100% 100%;
+    
+    position: relative;
+}
+
+
+.clickable{
+    color:blue;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

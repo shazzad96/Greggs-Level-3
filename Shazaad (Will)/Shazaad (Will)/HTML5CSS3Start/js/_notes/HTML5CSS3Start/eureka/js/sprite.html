@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sprite BG</title>
+<style>
+#banner{
+	width:640px;
+	height:194px;
+	border:1px solid #ccc;
+	background-image:url(../images/EurekaSpriteImage.png);
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+var ypos=0;
+$(document).ready(function(e) {
+    setInterval(move,1000);//change that for image change interval
+});
+
+function move(){
+	$('#banner').animate({
+			'background-position-x':'+=640px',
+			'background-position-y':ypos+'px'
+  		},500, function() {
+		console.log($('#banner').css('background-position-x'));
+		if($('#banner').css('background-position-x')/640==2){
+			ypos-=194;
+		}
+	});
+}
+
+</script>
+</head>
+
+<body>
+<div id="banner"></div>
+</body>
+</html>

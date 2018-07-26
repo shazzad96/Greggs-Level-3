@@ -1,0 +1,59 @@
+{
+    "cars": [
+        {
+            "id": "001",
+            "make": "Maserati",
+            "model": "Gran Turismo",
+            "imageFile": "image1.jpeg",
+            "desc": "A nice car",
+            "cost": "95000.9999",
+            "options": [
+                "Furry dice", "Satnav"
+            ]
+        },
+        {
+            "id": "002",
+            "make": "Maserati",
+            "model": "Gran Turismo",
+            "imageFile": "image2.jpeg",
+            "desc": "A car",
+            "cost": "115000.9999",
+            "options": [
+                "Sunroof", "Satnav"
+            ]
+        },
+        {
+            "id": "003",
+            "make": "BMW",
+            "model": "M3",
+            "imageFile": "image3.jpeg",
+            "desc": "Top Spec, competition pack",
+            "cost": "120000.9999",
+            "options": [
+                "Carbon Fibre", "Satnav"
+            ]
+        },
+        {
+            "id": "004",
+            "make": "Nissan",
+            "model": "Micra",
+            "imageFile": "image4.jpeg",
+            "desc": "Cheap to run",
+            "cost": "11500.9999",
+            "options": [
+                "Sunroof", "Touch Screen"
+            ]
+        },
+        {
+            "id": "005",
+            "make": "Toyota",
+            "model": "Yaris T Sport",
+            "imageFile": "image4.jpeg",
+            "desc": "Fast hatchbatch",
+            "cost": "14500.9999",
+            "options": [
+                "Sunroof", "Automatic Gearbox"
+            ]
+        }
+    ]
+}

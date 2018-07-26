@@ -1,0 +1,15 @@
+xml and  - have a look 
+
+
+jason - JavaScript Object Notation is a light weight data-interchange format. Uses human-readable text to transmit data objects consiting of attribute-value pairs and array of data types.
+
+AJAX 
+
+
+ionic framework/lab - myapp
+
+ios - Objective C
+android - javascript
+windows - C Sharp
+w3schools.com
+

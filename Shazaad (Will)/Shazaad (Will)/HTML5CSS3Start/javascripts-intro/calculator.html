@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="num1"><br>
+    <input type="text" id="num2"><br>
+    <button id="calcbtn">Add</button>
+    <output id="total"></output>
+    
+    <script>
+    
+    //listen for the user clicking the calcbtn 
+    
+    document.getElementById('calcbtn').addEventListener('click',calc);
+    function calc(){
+        var num1 = document.getElementById('num1').value;
+        var num2 = document.getElementById('num2').value;
+        var total = Number(num1) + Number(num2);
+        document.getElementById('total').innerHTML = total;
+        };
+    
+    
+    
+    </script>
+    
+    
+</body>
+</html>>

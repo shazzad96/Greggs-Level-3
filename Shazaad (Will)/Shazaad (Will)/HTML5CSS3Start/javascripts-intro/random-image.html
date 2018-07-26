@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <header>
+        <figure>
+            <img id="bannerImg" width="50%">
+            <figcaption id="bannerCaption"></figcaption>
+        </figure>
+    </header>
+    
+    <script>
+    
+        
+        //create an array as a data model
+        
+        var images = ['image1.jpeg','image2.jpeg','image3.jpeg','image4.jpeg','image5.jpeg'];
+        
+        function displayRandomImage(){
+            //generate a random number
+            var randomNum = Math.floor(Math.random()*images.length);
+            //console.log(images[randomNum]);
+            //use the randomNum to reference the value from the array and use tat value as the src of the img
+            document.getElementById('bannerImg').src = '../images2/' + images[randomNum]
+        };
+    
+        displayRandomImage();    
+    
+    </script>
+    
+    
+</body>
+</html>

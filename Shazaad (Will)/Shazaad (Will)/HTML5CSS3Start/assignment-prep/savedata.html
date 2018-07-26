@@ -1,0 +1,64 @@
+<script>
+    //create a suitable data model
+    var DataModel = {
+        items: []
+    };
+
+    //get any saved data from localStorage
+    if (localStorage.getItem('savedData') != undefined) {
+        //JSON.parse converts thestring data back into a javascript data
+        var savedData = JSON.parse(localStorage.getItem('savedData'));
+        Renderer.renderSavedData(savedData);
+        //hi all how you doing; update the data model with previously saved data
+        DataModel.items = savedData.items;
+    };
+
+    //listen for the user clicking the saveBtn
+    document.getElementById('saveBtn').addEventListener('click', saveData);
+
+
+    function saveData() {
+        //store form values in varibales
+        var dateEntered = document.getElementById('date').value;
+
+        //format the date into DD/MM/YYYY
+        var dateFormatter = new Date(dateEntered);
+        //console.log(dateFormatter);
+        var date = dateFormatter.getDate() + '/' + Number(dateFormatter.getMonth() + 1) + '/' + dateFormatter.getFullYear();
+
+        var title = document.getElementById('title').value;
+        var description = document.getElementById('description').value;
+
+        //check the user has provided the required data
+        if (date == '' || title == '' || description == '') {
+            alert('DOH!');
+            return;
+
+        };
+        //create an object to store in the DataModel
+        var objectToSave = {
+            date: date,
+            title: title,
+            description: description
+        };
+
+        //save new item to the DataModel
+        DataModel.items.push(objectToSave);
+        console.log(DataModel);
+
+
+        //save the data persistently in the brower's local storage
+        //we use JSON.stringify to convert the javascript object to a string we can only save string values to local storage
+        localStorage.setItem('savedData', JSON.stringify(DataModel));
+
+        //update the view 
+        Renderer.renderSavedData(DataModel);
+
+        //clear the filled form fields
+        document.getElementById('date').value = '';
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+
+    };
+
+</script>

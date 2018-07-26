@@ -1,0 +1,80 @@
+=
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        #clock {
+
+            border: pink solid 5px;
+            color: dodgerblue;
+            background-color: black;
+            font-family: sans-serif;
+            border-radius: 7px;
+            font-size: 4em;
+            width: 320px;
+            height: 80px;
+            text-align: center;
+
+
+        }
+
+
+        .red {
+            color: red
+        }
+
+        .green {
+            color: limegreen
+        }
+
+        .yellow {
+            color: yellow
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="clock"></div>
+
+    <script>
+        function formatnumber(num) {
+            if (num < 10) {
+                num = '0' + num;
+            };
+            return num;
+
+        };
+
+        function updatetime() {
+            //console.log('updatetime called');
+            //create a date object
+            var now = new Date();
+            //console.log(now.getTime());
+            var hours = formatnumber(now.getHours());
+            var mins = formatnumber(now.getMinutes());
+            var secs = formatnumber(now.getSeconds());
+
+
+            var hoursHTML = '<span class="red">' + hours + '</span>';
+            var minsHTML = '<span class="green">' + mins + '</span>';
+            var secsHTML = '<span class="yellow">' + secs + '</span>';
+
+            document.getElementById('clock').innerHTML = hoursHTML + ':' + minsHTML + ':' + secsHTML;
+        };
+
+        updatetime();
+        setInterval(updatetime, 1000);
+
+    </script>
+
+</body>
+
+</html>

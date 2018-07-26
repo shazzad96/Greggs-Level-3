@@ -1,0 +1,16 @@
+Wireframe - a wireframe is simplified outline of your product. The layout is normally in blocks with the usage of lines to represent text and empty blocks to hold images.
+Paper wireframe - faster and easier to create, difficult to reference and share
+digital wireframe - easier to share and reference, also easier to conver into a digital prototype.
+Helpful Processes:
+Sketch -> Wireframe -> Lo-fi Prototype -> Hi-fi Mockup -> Hi-fi Prototype -> Code
+Sketch -> Wierframe -> Coded Lo-fi Prototype -> Coded Hi-fi Prototype -> Code Cleanup 
+Wireframe - Shapes the final product, gives you a reliable idea of where eventually everything will go.
+Mockup - Are strictly visual, experiment with variations and  solidify your visual decisions. 
+
+
+
+
+Design a suitable data model for the application (JSON)
+Develop the application vew (HTML, CSS)
+Develop the application's business logic (JavaScript)
+Save the data entered by the user in persistent localStorage in the browser 

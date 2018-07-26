@@ -1,0 +1,193 @@
+<!doctype html>
+
+<!--Declare content to be written in proper English-->
+
+<html lang="en-gb">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewpoint" content="width=device-width">
+
+    <!--Title very important for search engine optimisation SEO-->
+    <title>Travel Essentials</title>
+    <!--    link to external style sheet-->
+    <link rel="stylesheet" href="CSS/styles.css">
+    <style>
+        /*        p{*/
+
+        color:green;
+        /*        }*/
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Travel Essentials</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="products.html">products</a></li>
+                <li><a href="contact.html">contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside>
+        <article>
+            <figure class="float-right business-card">
+                <img src="assets/sm-logo.gif" alt="Image of SM Logo">
+                <figcaption>SM Logo</figcaption>
+            </figure>
+            <h1>Featured Promotion</h1>
+            <p> Ut condimentum sed leo sit amet tincidunt. Nulla facilisi. Sed condimentum quis neque sit amet feugiat. Nullam consequat dolor risus, quis vestibulum lorem placerat at. Maecenas in leo quis mi placerat ultrices vel eu diam. Quisque eu mi sapien. Fusce luctus rhoncus sapien vitae consequat.</p>
+        </article>
+    </aside>
+
+    <section>
+
+        <table>
+
+            <section>
+
+                <h1>Products</h1>
+
+                <button id="getCarsBtn">Get Cars</button>
+
+                <table border="1" id="carsTable">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Cost</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- table rows to be created dynamically-->
+                    </tbody>
+
+                </table>
+
+            </section>
+
+            <section>
+
+                <h1>Shopping Cart</h1>
+
+                <table border="1" id="ShoppingCartTable">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- table rows to be created dynamically-->
+                    </tbody>
+
+                </table>
+
+            </section>
+
+            <footer>
+                &copy; Fujitsu 2017 | <a href="tel:01617778888"> Call us on 0161 777 8888</a> | <a href="terms.pdf">Terms and Conditions</a>
+            </footer>
+
+        </table>
+    </section>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script src="notify.min.js"></script>
+
+    <script>
+        //important to make sure document is ready before we start manipulating elements with jQuery
+        $(document).ready(function() {
+            //listen for the user clicking the getCarsBtn
+            $('#getCarsBtn').click(function() {
+                Communicator.getData('data.json');
+            }); //end of getCarsBtn click
+        }); //end of document.ready
+
+        //create an object to communicate with external data sources
+        var Communicator = {
+            getData: function(dataUrl) {
+                //use AJAX to get cars data
+                $.ajax({
+                    url: dataUrl,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(data) {
+                        Renderer.renderData(data);
+                    },
+                    error: function(x, m, s) {
+                        console.log(m)
+                    }
+                }); //end of AJAX
+            } //end of getData
+        }; //end of Communicator
+
+        //create object to deal with data with rendering data into the view
+        var Renderer = {
+            renderData: function(data) {
+
+                //clear the tbody ready for new data
+                $('#carsTable tbody').html('');
+                console.log(data);
+                //loop thru each item in the data and display in the HTML table
+                var numCars = data.cars.length;
+                for (var i = 0; i < numCars; i++) {
+                    //create a table row for each car
+                    var row = '<tr data-id="' + data.cars[i].id + '">';
+                    row += '<td>' + data.cars[i].make + ' ' + data.cars[i].model + '</td>';
+                    row += '<td>' + data.cars[i].desc + '</td>';
+                    row += '<td>' + Number(data.cars[i].cost).toFixed(2) + '</td>';
+                    //add a addToCart hyperlink
+                    row += '<td><a href="#" class="addLink">Add to Cart</a></td>';
+                    row += '</tr>';
+                    $('#carsTable tbody').append(row);
+                }; //end of for loop
+                //listen for user clicking on addLinks
+                $('.addLink').click(function(event) {
+                    //stop the browser handling the link event
+                    event.preventDefault();
+                    var rowToAdd = $(this).closest('tr').clone();
+                    //remove 4th cell (addLink)
+                    rowToAdd.find('td:nth-child(4)').remove();
+                    ShoppingCart.addToCart(rowToAdd);
+
+                }); //end of addLink
+            }
+        }; //end of Renderer
+
+        //create an object to handle shopping cart functionality
+        var ShoppingCart = {
+            addToCart: function(rowToAdd) {
+                //console.log(rowToAdd);
+
+                //check if car is already in cart
+                var found = false;
+                var idToAdd = rowToAdd.data('id');
+                //loop thru cart and check if id already exists
+                $('#ShoppingCartTable tbody tr').each(function() {
+                    if (idToAdd == $(this).data('id')) {
+                        found = true;
+                    };
+                }); //end of each loop
+
+                if (found != true) {
+                    $('#ShoppingCartTable tbody').append(rowToAdd);
+                    $.notify('Item added to shopping cart', 'success');
+                } else {
+                    $.notify('Item has already been added', 'warn');
+                }
+
+            }
+        }; //end of ShoppingCart
+    </script>
+
+</body>
+
+</html>

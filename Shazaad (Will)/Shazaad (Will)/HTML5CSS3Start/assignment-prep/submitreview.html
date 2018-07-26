@@ -1,0 +1,170 @@
+<!--
+<!doctype html>
+
+Declare content to be written in proper English
+
+<html lang="en-gb">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width">
+
+    <link rel="stylesheet" href="../CSS/moviestyles.css">
+
+    <article>
+        <h2>Submit Your Review</h2>
+        <form>
+            <ul>
+                <li>
+                    <label for="name">Name: </label>
+                    <input id="name" type="text" name="name" placeholder="Jane Doe" required>
+                </li>
+
+                <li>
+                    <label for="text">Movie Title: </label>
+                    <input id="title" type="text" placeholder="Name of Movie" required>
+                </li>
+                <li>
+                    <label for="message">Review:  </label>
+                    <textarea id="description" name="message" placeholder="Maximum 200 Characters.." required></textarea>
+                </li>
+                <li>
+                    <button type="button" id="submitBtn">Submit</button>
+                </li>
+            </ul>
+        </form>
+    </article>
+
+    <style>
+        h2 {
+            text-align-last:
+        }
+
+        form {
+            border: 3px solid #a90329;
+            border-radius: 10px;
+            text-align: left;
+            border-collapse: collapse;
+            border align-self: auto;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 5px;
+        }
+
+        textarea {
+            padding: inherit;
+            width: 395px;
+        }
+
+
+        label {
+            text-align: left;
+            display: block;
+            position: relative;
+        }
+
+        table {
+            border-radius: 10px;
+            border: 2.5px solid #ddd;
+            width: 100%;
+            display: table;
+        }
+
+        th,
+        td {
+            border-radius: 7px;
+            padding: 12px;
+            border-collapse: separate;
+            margin: auto;
+        }
+
+        button {
+            display: block;
+        }
+    </style>
+
+    <section>
+        <h2>Submitted Reviews</h2>
+        <table id="submittedTbl" border="1">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Title</th>
+                    <th>Review</th>
+                </tr>
+            </thead>
+            <tbody id="submittedTblTbody"></tbody>
+        </table>
+    </section>
+
+    <script src="../js/handlebars-v4.0.11.js"></script>
+
+    <script type="text/x-handlebars-template" id="tblTemplate">
+
+        {{#each items}}
+        <tr>
+            <td>{{User}}</td>
+            <td>{{Title}}</td>
+            <td>{{Review}}</td>
+        </tr>
+        {{/each}}
+    </script>
+
+    <script>
+        var Renderer = {
+            renderSubmittedData: function(submittedData) {
+                console.log(submittedData);
+
+                var source = document.getElementById('tblTemplate').innerHTML;
+
+                var template = Handlebars.compile(source);
+                var html = template(submittedData);
+                document.getElementById('submittedTblTbody').innerHTML = html;
+            }
+        };
+
+        var DataModel = {
+            items: []
+        };
+
+        if (localStorage.getItem('submittedData') != undefined) {
+
+            var submittedData = JSON.parse(localStorage.getItem('submittedData'));
+            Renderer.renderSubmittedData(submittedData);
+            DataModel.items = submittedData.items;
+        };
+
+        document.getElementById('submitBtn').addEventListener('click', submittedData);
+
+        function submittedData() {
+            var User = document.getElementById('name').value;
+            var Title = document.getElementById('title').value;
+            var Review = document.getElementById('description').value;
+
+            if (User == '' || Title == '' || Review == '') {
+                alert('DOH!');
+                return;
+            };
+
+            var objectToSave = {
+                User: User,
+                Title: Title,
+                Review: Review
+            };
+
+            DataModel.items.push(objectToSave);
+            console.log(DataModel);
+
+            localStorage.setItem('submittedData', JSON.stringify(DataModel));
+
+            Renderer.renderSubmittedData(DataModel);
+
+            document.getElementById('name').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('description').value = '';
+        };
+    </script>
+</head>
+
+</html>
+-->

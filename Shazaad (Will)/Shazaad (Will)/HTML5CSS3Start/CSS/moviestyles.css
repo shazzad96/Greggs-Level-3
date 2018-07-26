@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+/*    ('https://www.w3schools.com/howto/tryit.asp?font=Bangers');*/
+
+/*    ('https://fonts.googleapis.com/css?family=Magra|Permanent+Marker');*/
+
+body {
+    font-family: 'Bangers', sans-serif;
+    color: white;
+    letter-spacing: 2px;
+}
+
+html {
+    background: url(../chairs-468980474.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body > header {
+    height: 350px;
+    width: 900px;
+    background: url(../movies3.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+
+}
+
+body > header h1 {
+    font: 'Oswald';
+    font-size: 2.5em;
+    padding-left: 12px;
+    color: white;
+    text-shadow: 6px 6px 6px #000;
+
+}
+
+h2 {
+    color: white;
+    text-shadow: 0px -3px 9px #000;
+    font-size: 2em;
+    text-decoration: underline;
+
+}
+
+body > header,
+body > aside,
+body > section {
+    max-width: 800px;
+    margin: 20px auto;
+    border: 3px solid #a90329;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+body > header nav ul,
+body > section > ul,
+form > ul {
+    list-style: none;
+    margin: auto 5px;
+
+
+}
+
+body > section > ul,
+form > ul {
+    padding: 5px;
+    margin: auto 5px;
+}
+
+
+body > header nav li {
+    display: block;
+    padding-left: 3px;
+    padding-bottom: 6px;
+
+}
+
+/*psuedo selector*/
+
+a:hover {
+    color: white;
+}
+
+body > header nav a {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a90329+0,8f0222+44,6d0019+100;Brown+Red+3D */
+    background: rgb(169, 3, 41);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=0);
+    /* IE6-9 */
+    float left: left;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 7px;
+    width: 75px;
+    display: inline-block;
+    text-align: center;
+}
+
+body > header > nav a:hover {
+    background: black;
+    transition: background 0.35s;
+}
+
+body > header nav {
+    /*    padding: 20px;*/
+    position: left;
+    bottom: 10px;
+}
+
+body > header {
+    border: 2.5px solid #a90329;
+    border-radius: 2.5px;
+}
+
+label {
+    display: block;
+}
+
+form > ul > li {
+    margin: 12px;
+}
+
+input[type=text],
+input[type=text],
+textarea,
+select {
+    font-size: 1em;
+    width: 50%;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+input[type=date] {
+    font-size: 1em;
+    border: 1px solid #ccc;
+}
+
+input:focus,
+textarea:focus {
+    border: 2px solid #a90329;
+    padding-right: 70px;
+    transition: padding 0.5s;
+
+}
+
+*:focus {
+    outline: none;
+}
+
+input:required,
+textarea:required:valid {
+    background: #fff url(../form_demo/images/red_asterisk.png) no-repeat right;
+    padding: 5px 8px;
+}
+
+input:required:valid {
+    background: #fff url(../form_demo/images/valid.png) no-repeat 99% top;
+}
+
+input:focus:invalid,
+textarea:focus:invalid {
+    background: #fff url(../form_demo/images/invalid.png) no-repeat 99% top;
+}
+
+textarea {
+    height: 100px;
+    display: inline-block;
+}
+
+<span style="font-size:300%;color:yellow;" > &starf;
+</span >
+/*table styling*/
+
+table {
+    border-collapse: collapse;
+    border: 10px solid #ddd;
+    width: 100%;
+}
+
+th,
+td {
+    /*    border-radius: 5px solid #ddd;*/
+    vertical-align: baseline;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    /*    background-color: orangered*/
+}
+
+th {
+    background: linear-gradient(to bottom, #cc0000 0%, #0000cc 100%);
+
+    height: 10px;
+    color: white;
+    text-align: left;
+    /*    background-color: orangered*/
+}
+
+
+tbody tr:nth-child(even) {
+    background: linear-gradient(to bottom, #cc0000 0%, #0000cc 100%);
+
+}
+
+tbody td:nth-child(1) {
+    white-space: nowrap;
+}
+
+tr:hover {
+    background: linear-gradient(to top, #0066ff 0%, #9900cc 100%);
+}

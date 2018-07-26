@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewpoint" content="width=device-width">
+
+    <title>Movie Reviews</title>
+
+    <link rel="stylesheet" href="moviestyles.css">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">-->
+</head>
+
+<body>
+
+    <header>
+        <h1>Movie Reviews</h1>
+
+        <div id="id01" class="modal">
+
+            <form class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img id="ImgUser" src="if_user_925901.png" alt="User" />
+                </div>
+
+                <div class="container">
+                    <label><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit">Login</button>
+                    <input type="checkbox" checked="checked"> Remember me
+                </div>
+
+                <div class="container" style="background-color:black">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+        </script>
+
+        <div id="id02" class="modal2">
+
+            <form class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img id="ImgUser" src="if_user_925901.png" alt="User" />
+                </div>
+
+                <div class="container">
+                    <label><b>Email</b></label>
+                    <input type="email" placeholder="Enter Email" name="email" required>
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit">Sign Up</button>
+                    <input type="checkbox" checked="checked"> Remember me
+                </div>
+
+                <div class="container" style="background-color:black">
+                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+
+        <!--
+<script>
+    // Get the modal
+    var modal2 = document.getElementById('id02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+-->
+
+        <div class="dropdown">
+            <button class="dropbtn">Home</button>
+            <div class="dropdown-content">
+                <a href="movie.html">Home</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="../assignment-prep/contacts2.html">Contact</a>
+            </div>
+        </div>
+
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+        <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+
+    </header>
+
+    <aside>
+        <article>
+            <h2>Submit Your Review</h2>
+            <form>
+                <ul>
+                    <li>
+                        <label for="name">Name: </label>
+                        <input id="name" type="text" name="name" placeholder="Jane Doe" required>
+                    </li>
+
+                    <li>
+                        <label for="text">Movie Title: </label>
+                        <input id="title" type="text" placeholder="Name of Movie" required>
+                    </li>
+                    <li>
+                        <label for="message">Review:  </label>
+                        <textarea id="description" name="message" placeholder="Maximum 200 Characters.." required></textarea>
+                    </li>
+                    <li>
+                        <button type="button" id="submitBtn">Submit</button>
+                    </li>
+                </ul>
+            </form>
+        </article>
+    </aside>
+
+    <section>
+        <h2>Submitted Reviews</h2>
+        <table id="submittedTbl" border="1">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Title</th>
+                    <th>Review</th>
+                </tr>
+            </thead>
+            <tbody id="submittedTblTbody"></tbody>
+        </table>
+    </section>
+
+    <script src="../js/handlebars-v4.0.11.js">
+
+
+    </script>
+
+    <script type="text/x-handlebars-template" id="tblTemplate">
+
+        {{#each items}}
+        <tr>
+            <td>{{User}}</td>
+            <td>{{Title}}</td>
+            <td>{{Review}}</td>
+        </tr>
+        {{/each}}
+    </script>
+
+    <script>
+        var Renderer = {
+            renderSubmittedData: function(submittedData) {
+                console.log(submittedData);
+
+                var source = document.getElementById('tblTemplate').innerHTML;
+
+                var template = Handlebars.compile(source);
+                var html = template(submittedData);
+                document.getElementById('submittedTblTbody').innerHTML = html;
+            }
+        };
+
+        var DataModel = {
+            items: []
+        };
+
+        if (localStorage.getItem('submittedData') != undefined) {
+
+            var submittedData = JSON.parse(localStorage.getItem('submittedData'));
+            Renderer.renderSubmittedData(submittedData);
+            DataModel.items = submittedData.items;
+        };
+
+        document.getElementById('submitBtn').addEventListener('click', submittedData);
+
+        function submittedData() {
+            var User = document.getElementById('name').value;
+            var Title = document.getElementById('title').value;
+            var Review = document.getElementById('description').value;
+
+            if (User == '' || Title == '' || Review == '') {
+                alert('DOH!');
+                return;
+            };
+
+            var objectToSave = {
+                User: User,
+                Title: Title,
+                Review: Review
+            };
+
+            DataModel.items.push(objectToSave);
+            console.log(DataModel);
+
+            localStorage.setItem('submittedData', JSON.stringify(DataModel));
+
+            Renderer.renderSubmittedData(DataModel);
+
+            document.getElementById('name').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('description').value = '';
+        };
+
+    </script>
+
+
+    <section>
+
+        <h2>News</h2>
+        <!--        <a type="button" href="submitreview.html">Submit your review</a>-->
+
+        <ul>
+            <li>
+                <article>
+                    <header>
+                        <h1>Netflix to produce 3 movies by the end of 2019</h1>
+                    </header>
+                    <div class="content">
+                        <p>Cras ac mauris velit. Nunc sed augue et nisi pharetra ultricies vitae et lacus. Proin mi nibh, dapibus at lacinia quis, vestibulum quis tellus. Sed scelerisque erat turpis, et mattis quam facilisis quis. Aliquam erat volutpat. Aenean in lectus elementum, gravida erat pretium, mollis ante. Nunc tincidunt mauris orci, sit amet euismod neque vehicula ut. Etiam ac vehicula magna. In hac habitasse platea dictumst. Sed et posuere ex. Sed at condimentum augue. Nulla fermentum ante at erat feugiat aliquam. Donec eleifend, augue eget pretium imperdiet, nunc ante elementum ipsum, ac porttitor tortor diam eget diam. Aenean aliquam ante quis aliquam vehicula. Nunc eu pellentesque justo. Aliquam urna elit, accumsan eget tortor non, faucibus accumsan dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sodales sit amet libero sed congue. Fusce et urna vestibulum, placerat magna id, pretium ipsum. Etiam ornare dapibus ante nec euismod. Proin porta magna nulla, et accumsan libero facilisis eu. Suspendisse molestie mattis orci quis congue. Quisque cursus eget libero vestibulum convallis.</p>
+                    </div>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <header>
+                        <h1>Disney annouce Incredibles 2 for release in 2018</h1>
+                    </header>
+                    <div class="content">
+                        <p>Vivamus sit amet ornare ante. In tempus nulla vitae metus condimentum, et elementum magna dignissim. Aliquam varius, mi non iaculis tincidunt, nibh tortor consequat odio, ac interdum ipsum lectus ac nisl. Sed non risus nulla. Nullam vulputate eleifend euismod. Mauris iaculis lacus quis enim blandit, vitae pretium nisi vehicula. Aliquam malesuada odio ut nulla tempus, quis faucibus metus tincidunt. Morbi non arcu id augue gravida rhoncus ac vel magna. Pellentesque justo nibh, gravida at metus eget, tempus consectetur ante. Fusce eu nisi auctor, lobortis quam non, interdum velit. Ut tempus odio arcu, eu elementum enim placerat ut. Curabitur feugiat tristique nisi. Nulla ultricies, ex id ultrices egestas, sapien mauris congue arcu, ut dictum leo magna vitae velit. Proin hendrerit lacinia mauris. Aenean eleifend tincidunt arcu. Mauris sed elit dictum, lacinia sem non, gravida ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis tincidunt mollis. Aenean dolor tellus, viverra et odio eu, aliquam sodales risus. Nullam rhoncus nisl massa, vitae fringilla neque viverra quis. Etiam dapibus urna id diam rutrum convallis. Vivamus ultricies nunc sed lectus rutrum facilisis. Donec vehicula in tortor a accumsan. Nulla sollicitudin, eros vel mattis tempor, ante purus aliquam mauris, eu blandit orci nulla sed quam.</p>
+                    </div>
+                </article>
+            </li>
+            <article>
+                <header>
+                    <h1> Disney to buy 21st Century Fox assets in $66bn deal</h1>
+                </header>
+                <div class="content"></div>
+                <p>Nulla fermentum ante at erat feugiat aliquam. Donec eleifend, augue eget pretium imperdiet, nunc ante elementum ipsum, ac porttitor tortor diam eget diam. Aenean aliquam ante quis aliquam vehicula. Nunc eu pellentesque justo. Aliquam urna elit, accumsan eget tortor non, faucibus accumsan dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sodales sit amet libero sed congue. Fusce et urna vestibulum, placerat magna id, pretium ipsum. Etiam ornare dapibus ante nec euismod. Proin porta magna nulla, et accumsan libero facilisis eu. Suspendisse molestie mattis orci quis congue. Quisque cursus eget libero vestibulum convallis.Proin hendrerit lacinia mauris. Aenean eleifend tincidunt arcu. Mauris sed elit dictum, lacinia sem non, gravida ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+        </ul>
+    </section>
+
+    <div class="footer">
+        <nav>
+            <ul>
+                <a href="movie.html">Home</a>
+                <a href="../assignment-prep/contacts2.html">Contact</a>
+            </ul>
+        </nav>
+        <p>&copy; Movie Reviews 2018 | <a> MovieReviews.com,Inc</a></p>
+    </div>
+    
+<!--
+            <footer>
+            <br> &copy;
+            <?php  echo date('Y');   ?> Lucinda Gooding ZX. All Rights Reserved.
+        </footer> 
+-->
+
+    <style>
+        /* Full-width input fields */
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 8px 4px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+
+        button {
+
+            background-color: rgb(169, 3, 41);
+            /* Old browsers */
+            background-color: -moz-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* FF3.6-15 */
+            background-color: -webkit-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background-color: linear-gradient(to bottom, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=0);
+            /* IE6-9 */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 7px;
+            font-size: 15px;
+            width: 75px;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            margin: auto;
+
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra styles for the cancel button */
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #a90329;
+        }
+
+        /* Center the image and position the close button */
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+
+        .modal2 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            left: 0;
+            top: 0;
+            padding-top: 60px;
+        }
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+
+        /* Modal Content/Box */
+
+        .modal-content {
+            background-color: black;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 50%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button (x) */
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+
+
+
+
+        .dropbtn {
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a90329+0,8f0222+44,6d0019+100;Brown+Red+3D */
+            background-color: rgb(169, 3, 41);
+            /* Old browsers */
+            background-color: -moz-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* FF3.6-15 */
+            background-color: -webkit-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background-color: linear-gradient(to bottom, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=0);
+            /* IE6-9 */
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 7px;
+            font-size: 15px;
+            width: 65px;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            margin: auto 15px;
+
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+
+
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 120px;
+            z-index: 1;
+            margin: auto 15px;
+            text-align: left;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background: black;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #a90329;
+            transition: background 0.35s
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .footer {
+            position: sticky;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a90329+0,8f0222+44,6d0019+100;Brown+Red+3D */
+            background: rgb(169, 3, 41);
+            /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=0);
+            /* IE6-9 */
+            ;
+            color: white;
+            text-align: center;
+        }
+
+        .footer>nav ul {
+            list-style: none;
+            text-align: center;
+            display: block;
+        }
+
+        .footer a {
+            color: white;
+
+        }
+
+        .footer a:hover {
+            color: gold;
+        }
+
+        .footer>nav ul {
+            list-style: none;
+            text-align: center;
+            display: block;
+        }
+
+    </style>
+</body>
+
+
+</html>

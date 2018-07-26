@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    
+    <table id="employees_tbl"></table>
+
+    <script>
+        class Employee {
+
+            constructor(p_fname, p_lname, p_email) {
+                this.fname = p_fname;
+                this.lname = p_lname;
+                this.email = p_email;
+            }
+
+        }
+
+        var emp1 = new Employee('Jane', 'Doe', 'jane@there.com');
+        var emp2 = new Employee('John', 'Doe', 'john@there.com');
+        
+        var employees = new Array(emp1,emp2);
+        //employees.push(emp1);
+        //employees.push(emp2);
+        
+        
+        employees.forEach(function(emp){
+            var tablerow = document.createElement('tr');
+            var fnameCell = document.createElement('td');
+            fnameCell.innerHTML = emp.fname;
+            tablerow.appendChild(fnameCell);
+            
+            var lnameCell = document.createElement('td');
+            lnameCell.innerHTML = emp.lname;
+            tablerow.appendChild(lnameCell);
+            
+            var emailCell = document.createElement('td');
+            emailCell.innerHTML = emp.email;
+            tablerow.appendChild(emailCell);
+            
+            document.getElementById('employees_tbl').appendChild(tablerow);
+        });
+        
+        
+        
+        
+        
+    </script>
+
+
+
+
+</body>
+
+</html>

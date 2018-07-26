@@ -1,0 +1,24 @@
+Hyper Text Mark Up Language - HTML; latest version is HTML5
+Cascading Style Sheets - CSS 
+Java Script 
+
+HTML - is used to define a structure 
+
+Brackets.io - HTML5 writer
+
+li - list item
+anker tag href - 'a' needs a href creates a link 
+nav - navigation
+ul - unordered list 
+h1 - header one 
+
+GIF
+JPG
+PNG
+SVG 
+
+Section command is used to differentiate/seperate regions
+
+
+CSS/CSS3 - Presentation 
+Promotes usability 
